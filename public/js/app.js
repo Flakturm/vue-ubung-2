@@ -32667,7 +32667,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -32758,22 +32758,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         };
     },
+
+
+    filters: {
+        ago: function ago(date) {
+
+            return __WEBPACK_IMPORTED_MODULE_0_moment___default()(date).fromNow();
+        }
+    },
+
     created: function created() {
         var _this = this;
 
         __WEBPACK_IMPORTED_MODULE_1__models_Status__["a" /* default */].all(function (statuses) {
             return _this.statuses = statuses;
         });
-    },
-
-
-    methods: {
-        postedOn: function postedOn(status) {
-
-            return __WEBPACK_IMPORTED_MODULE_0_moment___default()(status.created_at).fromNow();
-        }
     }
-
 });
 
 /***/ }),
@@ -33087,6 +33087,12 @@ var Status = function () {
     }
 
     _createClass(Status, null, [{
+        key: 'find',
+        value: function find(id) {
+
+            return axios.get('/statuses/' + id);
+        }
+    }, {
         key: 'all',
         value: function all(then) {
             // fire off an ajax request
@@ -33128,7 +33134,7 @@ var render = function() {
               _c("p", [
                 _vm._v(
                   "\n                        " +
-                    _vm._s(_vm.postedOn(status)) +
+                    _vm._s(_vm._f("ago")(status.created_at)) +
                     "\n                    "
                 )
               ])

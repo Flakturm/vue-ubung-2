@@ -12,7 +12,7 @@
                         {{ status.user.name }} said...
 
                         <p>
-                            {{ postedOn(status) }}
+                            {{ status.created_at | ago }}
                         </p>
                     </div>
 
@@ -45,22 +45,21 @@ export default {
 
     },
 
+    filters: {
+
+        ago(date) {
+
+            return moment(date).fromNow();
+
+        }
+
+    },
+
     created() {
 
         Status.all(statuses => this.statuses = statuses);
 
     },
-
-    methods: {
-
-        postedOn(status) {
-
-            return moment(status.created_at).fromNow();
-
-        }
-
-    }
-
 }
 </script>
 
